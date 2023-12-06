@@ -1,11 +1,14 @@
 using Interfaces;
-using UnityEngine;
+using System.Threading.Tasks;
+using UI.Views;
 using UnityEngine.SceneManagement;
 
 namespace GameStates
 {
     public class MainMenuState : IGameState
     {
+        private MainMenuView _mainMenuView;
+
         private IGameStateManager _gameStateManager;
 
         public MainMenuState(IGameStateManager gameStateManager)
@@ -13,24 +16,31 @@ namespace GameStates
             _gameStateManager = gameStateManager;
         }
 
-        public void Enter()
+        public async void Enter()
         {
-            SceneManager.LoadSceneAsync("MainMenu");
+            var handle = SceneManager.LoadSceneAsync("MainMenu");
+            while (handle.isDone == false) { await Task.Delay(500); }
+
+            _mainMenuView = UnityEngine.Object.FindAnyObjectByType<MainMenuView>();
+            _mainMenuView.Enable();
+
+            _mainMenuView.onPlayButtonClicked += EnterGameplayState;
         }
 
         public void Exit()
         {
-
+            _mainMenuView.Disable();
+            _mainMenuView.onPlayButtonClicked -= EnterGameplayState;
         }
 
         public void Update()
         {
-            Debug.Log("GG");
 
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                _gameStateManager.ChangeState(new GameplayState(_gameStateManager));
-            }
+        }
+
+        private void EnterGameplayState()
+        {
+            _gameStateManager.ChangeState(new GameplayState(_gameStateManager));
         }
     }
 }

@@ -1,6 +1,7 @@
 using Interfaces;
 using System.Collections;
 using System.Collections.Generic;
+using UI.Views;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,8 @@ namespace GameStates
 {
     public class GameplayState : IGameState
     {
+        private GameplayView gameplayView;
+
         private IGameStateManager _gameStateManager;
 
         public GameplayState(IGameStateManager gameStateManager) 
