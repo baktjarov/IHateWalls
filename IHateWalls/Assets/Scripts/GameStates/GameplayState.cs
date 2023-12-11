@@ -1,43 +1,62 @@
 using Interfaces;
-using System.Collections;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 using UI.Views;
-using UnityEngine;
 using UnityEngine.SceneManagement;
+using Walls;
 
 namespace GameStates
 {
     public class GameplayState : IGameState
     {
-        private GameplayView gameplayView;
-
+        private GameplayView _gameplayView;
+        private WinView _winView;
+        private WallHolder _wallHolder;
         private IGameStateManager _gameStateManager;
 
-        public GameplayState(IGameStateManager gameStateManager) 
+        public GameplayState(IGameStateManager gameStateManager)
         {
             _gameStateManager = gameStateManager;
         }
 
-        public void Enter()
+        public async void Enter()
         {
-            SceneManager.LoadSceneAsync("Gameplay");
+            var handle = SceneManager.LoadSceneAsync("Gameplay");
+            while (handle.isDone == false) { await Task.Delay(500); }
+
+            _gameplayView = UnityEngine.Object.FindAnyObjectByType<GameplayView>(UnityEngine.FindObjectsInactive.Include);
+            _winView = UnityEngine.Object.FindAnyObjectByType<WinView>(UnityEngine.FindObjectsInactive.Include);
+
+            _wallHolder = UnityEngine.Object.FindObjectOfType<WallHolder>(true);
+
+            _gameplayView.Enable();
+
+            _winView.onReplayButtonClicked += Replay;
+            _winView.onMainMenuButtonClicked += GoToMainMenu;
         }
 
         public void Exit()
         {
-
+            _winView.onReplayButtonClicked -= Replay;
+            _winView.onMainMenuButtonClicked -= GoToMainMenu;
         }
 
         public void Update()
         {
-
-            Debug.Log("MM");
-
-
-            if (Input.GetKeyDown(KeyCode.M))
+            if (_gameplayView != null)
             {
-                _gameStateManager.ChangeState(new MainMenuState(_gameStateManager));
+                _gameplayView.Enable();
+                _gameplayView?.SetProgress(_wallHolder.destructPercentage, _wallHolder.wallPieces.Count);
             }
+        }
+
+        private void Replay()
+        {
+            _gameStateManager.ChangeState(new GameplayState(_gameStateManager));
+        }
+
+        private void GoToMainMenu()
+        {
+            _gameStateManager.ChangeState(new MainMenuState(_gameStateManager));
         }
     }
 }

@@ -7,12 +7,9 @@ namespace UI.Views
     {
         [SerializeField] private Slider _progressSlider;
 
-        public void SetProgress(float progress)
+        public void SetProgress(float progress, int maxValue)
         {
-            if (_progressSlider.maxValue < 100)
-            {
-                _progressSlider.maxValue = 100;
-            }
+            _progressSlider.maxValue = maxValue;
 
             _progressSlider.value = progress;
         }

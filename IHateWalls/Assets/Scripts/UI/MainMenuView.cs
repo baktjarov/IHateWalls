@@ -14,11 +14,13 @@ namespace UI.Views
         public override void Enable()
         {
             base.Enable();
+
             _playButton.onClick.AddListener(OnPlayButtonClicked);
         }
         public override void Disable()
         {
             base.Disable();
+
             _playButton.onClick.RemoveListener(OnPlayButtonClicked);
         }
 
