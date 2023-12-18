@@ -1,13 +1,13 @@
-using System.Collections.Generic;
-
 namespace Interfaces
 {
     public interface IServiceLocator
     {
-        public Dictionary<IService, object> _services { get; }
+        public static IServiceLocator Global { get; protected set; }
 
-        public void Register<IService>(IService service);
-        public void Unregister<IService>(IService service);
-        public T GetService<T>() where T : IService;
+        public void MakeGlobal();
+
+        public void Register(IService service);
+        public void Unregister(IService service);
+        public T GetService<T>();
     }
 }

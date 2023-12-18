@@ -1,5 +1,6 @@
 using GameStates;
 using Interfaces;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace GameCore
@@ -8,6 +9,8 @@ namespace GameCore
     {
         private IServiceLocator _serviceLocator;
         private IGameStateManager _gameStateManager;
+
+        [SerializeField] private List<ScriptableObject> _scriptableObjectServices = new();
 
         private void Start()
         {
@@ -23,8 +26,19 @@ namespace GameCore
 
         private void InitGame()
         {
-            _gameStateManager = new GameStateManagner();
+            _serviceLocator = new ServiceLocator();
+            _serviceLocator.MakeGlobal();
 
+            foreach (ScriptableObject scriptableObject in _scriptableObjectServices)
+            {
+                if (scriptableObject is IService)
+                {
+                    IService convertedService = (IService)scriptableObject;
+                    _serviceLocator.Register(convertedService);
+                }
+            }
+
+            _gameStateManager = new GameStateManagner();
             _gameStateManager.ChangeState(new MainMenuState(_gameStateManager));
         }
     }

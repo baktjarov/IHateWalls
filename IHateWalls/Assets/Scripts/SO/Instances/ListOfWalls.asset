@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be10a182ab0547043ae4c88f53d97f6f, type: 3}
   m_Name: ListOfWalls
   m_EditorClassIdentifier: 
-  _currentWallIndex: 0
+  _currentWallIndex: 1
   _walls:
   - {fileID: 4538876864492483766, guid: 4f74e1e841edb4943806b0a31a32f229, type: 3}
   - {fileID: 9190998002835403220, guid: b7c5df94739ec19499070221f5678172, type: 3}
