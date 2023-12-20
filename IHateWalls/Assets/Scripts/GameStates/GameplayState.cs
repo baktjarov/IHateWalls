@@ -16,6 +16,7 @@ namespace GameStates
         private IGameStateManager _gameStateManager;
         private IServiceLocator _serviceLocator;
         private ListOfWalls _listOfWalls;
+        private ListOfViews _listOfViews;
 
         public GameplayState(IGameStateManager gameStateManager)
         {
@@ -64,14 +65,22 @@ namespace GameStates
             }
 
             _listOfWalls = _serviceLocator.GetService<ListOfWalls>();
+            _listOfViews = _serviceLocator.GetService<ListOfViews>();
 
             return true;
         }
 
         private void SetupUI()
         {
-            _gameplayView = UnityEngine.Object.FindAnyObjectByType<GameplayView>(UnityEngine.FindObjectsInactive.Include);
-            _winView = UnityEngine.Object.FindAnyObjectByType<WinView>(UnityEngine.FindObjectsInactive.Include);
+            if (_listOfViews.TryGetView<GameplayView>(out GameplayView gameplayViewFromList) == true)
+            {
+                _gameplayView = Object.Instantiate(gameplayViewFromList);
+            }
+
+            if (_listOfViews.TryGetView<WinView>(out WinView winViewFromList) == true)
+            {
+                _winView = Object.Instantiate(winViewFromList);
+            }
 
             _gameplayView.Enable();
 

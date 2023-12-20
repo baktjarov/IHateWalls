@@ -169,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectServices:
   - {fileID: 11400000, guid: 6dd07d78cfff90b4e9c119cd0acf4d7b, type: 2}
+  - {fileID: 11400000, guid: f03286ae42685844098c7582ab72e31a, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
