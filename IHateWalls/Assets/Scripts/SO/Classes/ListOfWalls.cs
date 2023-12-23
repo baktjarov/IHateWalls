@@ -10,7 +10,23 @@ namespace SO
 
     public class ListOfWalls : ScriptableObject, IService
     {
-        public int currentWallIndex => _currentWallIndex;
+        public int currentWallIndex
+        {
+            get
+            {
+                if (_currentWallIndex >= _walls.Count)
+                {
+                    _currentWallIndex = 0;
+                }
+
+                if (_currentWallIndex < 0)
+                {
+                    _currentWallIndex = 0;
+                }
+
+                return _currentWallIndex;
+            }
+        }
 
         [SerializeField] private int _currentWallIndex = 0;
 
@@ -18,7 +34,17 @@ namespace SO
 
         public WallHolder GetWall()
         {
-            return _walls[_currentWallIndex];
+            return _walls[currentWallIndex];
+        }
+
+        public void SetNextWall()
+        {
+            _currentWallIndex++;
+
+            if (_currentWallIndex >= _walls.Count)
+            {
+                _currentWallIndex = 0;
+            }
         }
     }
 }

@@ -12,6 +12,11 @@ namespace Player
         [SerializeField] private Bullet _bulletPrefab;
         [SerializeField] private Transform _shootSocket;
 
+        private void Start()
+        {
+            _camera = FindObjectOfType<Camera>(true);
+        }
+
         private void Update()
         {
             if (Input.GetMouseButtonUp(0))

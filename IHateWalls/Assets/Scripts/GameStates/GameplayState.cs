@@ -10,13 +10,29 @@ namespace GameStates
 {
     public class GameplayState : IGameState
     {
+        private enum GameplayStates
+        {
+            gameplay,
+            win
+        }
+
+        //UI
         private GameplayView _gameplayView;
         private WinView _winView;
+
+        //Wall
         private WallHolder _wallHolder;
+
+        //Managers
         private IGameStateManager _gameStateManager;
         private IServiceLocator _serviceLocator;
+
+        //Dependencies
         private ListOfWalls _listOfWalls;
         private ListOfViews _listOfViews;
+        private GameSettings _gameSettings;
+
+        private GameplayStates _gameplayStates;
 
         public GameplayState(IGameStateManager gameStateManager)
         {
@@ -30,6 +46,8 @@ namespace GameStates
 
             if (SetupDependencies() == true)
             {
+                _gameplayStates = GameplayStates.gameplay;
+
                 SetupUI();
                 AddWall();
             }
@@ -49,8 +67,43 @@ namespace GameStates
         {
             if (_gameplayView != null)
             {
-                _gameplayView.Enable();
-                _gameplayView?.SetProgress(_wallHolder.destructPercentage, _wallHolder.wallPieces.Count);
+                switch (_gameplayStates)
+                {
+                    case GameplayStates.gameplay:
+                        {
+                            HandleGameplayState();
+                            break;
+                        }
+                    case GameplayStates.win:
+                        {
+                            HandleWinState();
+                            break;
+                        }
+                }
+            }
+        }
+
+        private void HandleGameplayState()
+        {
+            float realeasedPieces = (float)_wallHolder.destructProgress;
+            float destructPercentage = (realeasedPieces / _wallHolder.wallPieces.Count) * 100;
+
+            _gameplayView?.SetProgress(destructPercentage, 100);
+
+            if (destructPercentage >= _gameSettings.winPercentage)
+            {
+                _listOfWalls.SetNextWall();
+
+                _gameplayView.Disable();
+                _gameplayStates = GameplayStates.win;
+            }
+        }
+
+        private void HandleWinState()
+        {
+            if (_winView.gameObject.activeInHierarchy == false)
+            {
+                _winView.Enable();
             }
         }
 
@@ -66,6 +119,7 @@ namespace GameStates
 
             _listOfWalls = _serviceLocator.GetService<ListOfWalls>();
             _listOfViews = _serviceLocator.GetService<ListOfViews>();
+            _gameSettings = _serviceLocator.GetService<GameSettings>();
 
             return true;
         }
@@ -97,7 +151,7 @@ namespace GameStates
 
         private void Replay()
         {
-            _gameStateManager.ChangeState(new GameplayState(_gameStateManager));
+            _gameStateManager.ChangeState(new GameStates.GameplayState(_gameStateManager));
         }
 
         private void GoToMainMenu()

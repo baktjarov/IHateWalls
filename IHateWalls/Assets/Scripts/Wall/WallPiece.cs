@@ -27,6 +27,32 @@ namespace Walls
             GetComponent<MeshCollider>().convex = true;
         }
 
+        private void Start()
+        {
+            SetScale();
+        }
+
+        private float _scale = 1;
+        private void Update()
+        {
+            if (isRealeased == true)
+            {
+                _scale -= 1f * Time.deltaTime;
+
+                SetScale();
+
+                if (_scale < 0.1f)
+                {
+                    Destroy(gameObject);
+                }
+            }
+        }
+
+        private void SetScale()
+        {
+            transform.localScale = Vector3.one * _scale;
+        }
+
         public void Damage(float damage)
         {
             _rigidbody.useGravity = true;

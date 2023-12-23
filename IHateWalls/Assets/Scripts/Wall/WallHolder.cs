@@ -6,7 +6,7 @@ namespace Walls
 {
     public class WallHolder : MonoBehaviour
     {
-        public float destructPercentage { get; private set; } = 0;
+        public int destructProgress { get; private set; } = 0;
 
         [SerializeField] public List<WallPiece> wallPieces = new List<WallPiece>();
 
@@ -17,13 +17,13 @@ namespace Walls
 
         private void Update()
         {
-            destructPercentage = 0;
+            destructProgress = 0;
 
             foreach (WallPiece piece in wallPieces)
             {
                 if (piece.isRealeased == true)
                 {
-                    destructPercentage++;
+                    destructProgress++;
                 }
             }
         }

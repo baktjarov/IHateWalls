@@ -201,4 +201,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 100
+  _destroyDelay: 2
   _rigidbody: {fileID: 3031278127121597713}
