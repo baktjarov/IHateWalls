@@ -23,9 +23,7 @@ namespace GameStates
         public async void Enter()
         {
             // Асинхронная загрузка сцены "MainMenu"
-            var handle = SceneManager.LoadSceneAsync("MainMenu");
-            // Ожидание завершения загрузки сцены
-            while (handle.isDone == false) { await Task.Delay(500); }
+            SceneManager.LoadScene("MainMenu");
 
             // Поиск представления главного меню
             _mainMenuView = UnityEngine.Object.FindAnyObjectByType<MainMenuView>(UnityEngine.FindObjectsInactive.Include);

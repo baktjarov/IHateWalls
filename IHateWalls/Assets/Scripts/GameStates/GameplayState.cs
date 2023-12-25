@@ -47,11 +47,8 @@ namespace GameStates
         public async void Enter()
         {
             // Загрузка сцены Gameplay
-            var handle = SceneManager.LoadSceneAsync("Gameplay");
-
-            // Ожидание завершения загрузки сцены
-            while (handle.isDone == false) { await Task.Delay(500); }
-
+            SceneManager.LoadScene("Gameplay");
+            
             // Проверка и установка зависимостей
             if (SetupDependencies() == true)
             {
