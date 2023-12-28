@@ -6,6 +6,11 @@ namespace Enviroments
 {
     public class Enviroment : MonoBehaviour
     {
+        [SerializeField] private Material _skyBox;
 
+        private void Awake()
+        {
+            RenderSettings.skybox = _skyBox;
+        }
     }
 }
