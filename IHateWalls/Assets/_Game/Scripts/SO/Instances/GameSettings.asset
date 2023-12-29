@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 388f2a9d14289df44afbf066f8da9a20, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  <winPercentage>k__BackingField: 90
+  <winPercentage>k__BackingField: 20

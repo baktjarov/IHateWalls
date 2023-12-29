@@ -10,6 +10,12 @@ namespace UI.Views
 
         [SerializeField] private Button _playButton;
         [SerializeField] private Button _quitButton;
+        [SerializeField] private Material _skyBox;
+
+        private void Awake()
+        {
+            RenderSettings.skybox = _skyBox;
+        }
 
         public override void Enable()
         {

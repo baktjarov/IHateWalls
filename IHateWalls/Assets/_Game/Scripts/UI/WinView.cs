@@ -11,6 +11,7 @@ namespace UI.Views
 
         [SerializeField] private Button _nextButton;
         [SerializeField] private Button _mainMenuButton;
+        [SerializeField] private PlayerController _playerController; // Ссылка на скрипт управления персонажем
 
         public override void Enable()
         {
@@ -18,6 +19,11 @@ namespace UI.Views
 
             _nextButton.onClick.AddListener(OnNextButtonClicked);
             _mainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
+
+            if (_playerController != null)
+            {
+                _playerController.SetPlayerActive(false); // При активации WinView выключаем персонажа
+            }
         }
 
         public override void Disable()
@@ -26,6 +32,11 @@ namespace UI.Views
 
             _nextButton.onClick.RemoveListener(OnNextButtonClicked);
             _mainMenuButton.onClick.RemoveListener(OnMainMenuButtonClicked);
+
+            if (_playerController != null)
+            {
+                _playerController.SetPlayerActive(true); // При выключении WinView включаем обратно персонажа
+            }
         }
 
         private void OnNextButtonClicked()
