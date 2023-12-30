@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playButton: {fileID: 591901204403043940}
+  _settingsButton: {fileID: 3700240820095753097}
   _quitButton: {fileID: 9125433101960413332}
   _skyBox: {fileID: 2100000, guid: 2bd8959f5fbd3644aa33af1a155fc147, type: 2}
 --- !u!1001 &1050011814499865292
@@ -460,6 +461,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e6143e24eb2dc27c938ac63805eaeec, type: 3}
+--- !u!114 &3700240820095753097 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8085765767733924440, guid: 9e6143e24eb2dc27c938ac63805eaeec,
+    type: 3}
+  m_PrefabInstance: {fileID: 4859256780800018897}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6769762386086004143 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2205791085962939518, guid: 9e6143e24eb2dc27c938ac63805eaeec,

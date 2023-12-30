@@ -196,7 +196,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nextButton: {fileID: 56041661907010065}
   _mainMenuButton: {fileID: 1085483878350417475}
-  _playerController: {fileID: 2181176250885070478, guid: 76d947a0b57b84647bd8bafdd0ef5916,
+  _settingsButton: {fileID: 83784121492586526}
+  _playerController: {fileID: 4510160312077703108, guid: 76d947a0b57b84647bd8bafdd0ef5916,
     type: 3}
 --- !u!1 &8140124691095260702
 GameObject:
@@ -598,6 +599,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1979424d65edd3f47b502716eabe765e, type: 3}
+--- !u!114 &83784121492586526 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2802561457083296618, guid: 1979424d65edd3f47b502716eabe765e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2867979311175232372}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1002402241113757576 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3036592163721903356, guid: 1979424d65edd3f47b502716eabe765e,

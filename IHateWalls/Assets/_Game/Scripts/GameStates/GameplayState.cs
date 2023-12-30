@@ -18,12 +18,14 @@ namespace GameStates
         private enum GameplayStates
         {
             gameplay,
-            win
+            win,
+            settings
         }
 
         //UI
         private GameplayView _gameplayView;
         private WinView _winView;
+        private SettingsView _settingsView;
 
         //Wall
         private WallHolder _wallHolder;
@@ -70,6 +72,9 @@ namespace GameStates
         {
             _winView.onNextButtonClicked -= Next;
             _winView.onMainMenuButtonClicked -= GoToMainMenu;
+            _winView.onSettingsButtonClicked -= GoToSettings;
+
+            _settingsView.onBackButtonClicked -= GoToWinView;
         }
 
         public void Update()
@@ -86,6 +91,11 @@ namespace GameStates
                     case GameplayStates.win:
                         {
                             HandleWinState();
+                            break;
+                        }
+                    case GameplayStates.settings:
+                        {
+                            HandleSettingsState();
                             break;
                         }
                 }
@@ -113,6 +123,17 @@ namespace GameStates
             if (_winView.gameObject.activeInHierarchy == false)
             {
                 _winView.Enable();
+                _settingsView.Disable();
+            }
+        }
+
+        private void HandleSettingsState()
+        {
+            if (_settingsView.gameObject.activeInHierarchy == false)
+            {
+                _settingsView.Enable();
+                _winView.Disable();
+                _gameplayStates = GameplayStates.settings;
             }
         }
 
@@ -146,16 +167,23 @@ namespace GameStates
                 _winView = Object.Instantiate(winViewFromList);
             }
 
+            if (_listOfViews.TryGetView<SettingsView>(out SettingsView settingsViewFromList) == true)
+            {
+                _settingsView = Object.Instantiate(settingsViewFromList);
+            }
+
             _gameplayView.Enable();
 
             _winView.onNextButtonClicked += Next;
             _winView.onMainMenuButtonClicked += GoToMainMenu;
+            _winView.onSettingsButtonClicked += GoToSettings;
+
+            _settingsView.onBackButtonClicked += GoToWinView;
         }
 
         private void AddWall()
         {
             WallHolder wallFromList = _listOfWalls.GetWall();
-
             _wallHolder = Object.Instantiate(wallFromList);
         }
 
@@ -173,6 +201,17 @@ namespace GameStates
         private void GoToMainMenu()
         {
             _gameStateManager.ChangeState(new MainMenuState(_gameStateManager));
+        }
+
+        private void GoToSettings()
+        {
+            HandleSettingsState();
+        }
+
+        private void GoToWinView()
+        {
+            _gameplayStates = GameplayStates.win;
+            HandleWinState();
         }
     }
 }

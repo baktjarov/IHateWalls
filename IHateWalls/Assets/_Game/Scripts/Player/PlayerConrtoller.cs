@@ -1,28 +1,31 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+namespace Player
 {
-    [SerializeField] private GameObject _playerObject; // Ссылка на объект персонажа
-
-    private bool isPlayerActive = true;
-
-    private void Start()
+    public class PlayerController : MonoBehaviour
     {
-        SetPlayerActive(true); // При старте убедимся, что персонаж включен
-    }
+        [SerializeField] private GameObject _playerObject; // Ссылка на объект персонажа
 
-    public void SetPlayerActive(bool isActive)
-    {
-        isPlayerActive = isActive;
+        private bool isPlayerActive = true;
 
-        // Проверяем, что объект персонажа был привязан в редакторе Unity
-        if (_playerObject != null)
+        private void Start()
         {
-            _playerObject.SetActive(isActive);
+            SetPlayerActive(true); // При старте убедимся, что персонаж включен
         }
-        else
+
+        public void SetPlayerActive(bool isActive)
         {
-            Debug.LogError("Player object reference is missing!");
+            isPlayerActive = isActive;
+
+            // Проверяем, что объект персонажа был привязан в редакторе Unity
+            if (_playerObject != null)
+            {
+                _playerObject.SetActive(isActive);
+            }
+            else
+            {
+                Debug.LogError("Player object reference is missing!");
+            }
         }
     }
 }
