@@ -10,35 +10,35 @@ namespace FWC
 
         public AudioMixer masterMixer;
 
-        //public AudioSource source_Dialogo; //audio source da música
+        //public AudioSource source_Dialogo; //audio source da mï¿½sica
 
         private float volume_sfx = 1;
         private float volume_music = 1;
 
         //Mute
 
-        [SerializeField] Image image_SFX, image_Music; //Armazenar imagem do botão mute da cena
+        [SerializeField] Image image_SFX, image_Music; //Armazenar imagem do botï¿½o mute da cena
 
         public Sprite[] sprite_SFX , sprite_Music; //Armazenar sprites "Icon_music On" e "Icon_music Off"
 
-        //Referencia estática deste Script, para que ele possa ser acessado pelos outros scripts
+        //Referencia estï¿½tica deste Script, para que ele possa ser acessado pelos outros scripts
 
         public static SoundManager Instance;
 
 
-        //checar se está mutado ou não
+        //checar se estï¿½ mutado ou nï¿½o
 
         private bool muteSFX, muteMusic;
 
-        //Armazenar áudios como .mp4 .ogg
+        //Armazenar ï¿½udios como .mp4 .ogg
 
         public AudioClip[] clip_SFX; //efeitos sonoros
-        public AudioClip[] clip_Music; //música
+        public AudioClip[] clip_Music; //mï¿½sica
 
         //Armazenar Audio Sources da cena
 
         public AudioSource source_SFX; //audio source para efeitos sonoros
-        public AudioSource source_Music; //audio source para música
+        public AudioSource source_Music; //audio source para mï¿½sica
 
 
         private void Awake()
@@ -125,9 +125,6 @@ namespace FWC
 
             masterMixer.SetFloat("VolumeSFX", sfxVol);
         }
-
-
-
     }
 
 }

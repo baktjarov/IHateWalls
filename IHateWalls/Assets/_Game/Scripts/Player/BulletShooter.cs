@@ -29,8 +29,8 @@ namespace Player
         {
             Bullet bulletInstance = Instantiate(_bulletPrefab, _shootSocket.position, _shootSocket.rotation);
 
-            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-            bulletInstance.AddForce(ray.direction * _force);
+            Vector3 shootDirection = _shootSocket.forward;
+            bulletInstance.AddForce(shootDirection * _force);
         }
     }
 }

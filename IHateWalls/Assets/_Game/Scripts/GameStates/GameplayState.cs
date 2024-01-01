@@ -8,7 +8,6 @@ using UI.Views;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Walls;
-
 using Object = UnityEngine.Object;
 
 namespace GameStates
@@ -48,6 +47,7 @@ namespace GameStates
         }
 
         private CoroutineRunner _coroutineRunner;
+
         public void Enter()
         {
             if (SetupDependencies() == true)
