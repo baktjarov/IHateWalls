@@ -1,4 +1,5 @@
 using UnityEngine;
+using UI.Views;
 
 namespace Player
 {
@@ -17,15 +18,7 @@ namespace Player
             _camera = FindObjectOfType<Camera>(true);
         }
 
-        private void Update()
-        {
-            if (Input.GetMouseButtonUp(0))
-            {
-                Shoot();
-            }
-        }
-
-        private void Shoot()
+        public void Shoot()
         {
             Bullet bulletInstance = Instantiate(_bulletPrefab, _shootSocket.position, _shootSocket.rotation);
 

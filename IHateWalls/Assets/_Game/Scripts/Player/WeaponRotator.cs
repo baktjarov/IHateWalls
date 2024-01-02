@@ -37,13 +37,12 @@ namespace Player
         private void RotateWeapon(float xAngle, float yAngle)
         {
             xAngle *= _sensitivity;
-            _currentBaseYAngle += xAngle;
-            _currentBaseYAngle = Mathf.Clamp(_currentBaseYAngle, _maxLeftRotation, _maxRightRotation);
+            _currentBaseYAngle -= xAngle;
+            _currentBaseYAngle = Mathf.Clamp(_currentBaseYAngle, -_maxRightRotation, -_maxLeftRotation);
             _base.localRotation = Quaternion.Euler(0, _currentBaseYAngle, 0);
 
             yAngle *= _sensitivity;
             _currentBarrelXAngle += yAngle;
-
             _currentBarrelXAngle = Mathf.Clamp(_currentBarrelXAngle, _maxDownRotation, _maxUpRotation);
             _barrel.localRotation = Quaternion.Euler(_currentBarrelXAngle, 0, 0);
         }
