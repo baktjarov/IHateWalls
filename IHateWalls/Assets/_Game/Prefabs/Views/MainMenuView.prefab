@@ -455,6 +455,11 @@ PrefabInstance:
       propertyPath: m_text
       value: Options
       objectReference: {fileID: 0}
+    - target: {fileID: 8085765767733924440, guid: 9e6143e24eb2dc27c938ac63805eaeec,
+        type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -589,6 +594,11 @@ PrefabInstance:
     - target: {fileID: 2205791085962939518, guid: 9e6143e24eb2dc27c938ac63805eaeec,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8085765767733924440, guid: 9e6143e24eb2dc27c938ac63805eaeec,
+        type: 3}
+      propertyPath: m_Transition
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

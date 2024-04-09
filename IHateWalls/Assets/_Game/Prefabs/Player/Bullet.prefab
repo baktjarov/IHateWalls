@@ -200,6 +200,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f81505651e7dc04b90a9b31ee0d6d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 650025163079713408}
-  _damage: 100
-  _destroyDelay: 2
+  _pooling: {fileID: 11400000, guid: ab6e4fb6cbf99434e9607dc374c25b2e, type: 2}
+  _lifetime: 4

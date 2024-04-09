@@ -3,27 +3,17 @@ using UnityEngine.EventSystems;
 
 namespace FWC
 {
-    public class HoverAnim : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerUpHandler
+    public class HoverAnim : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
-
         [SerializeField] private float scaleChange = 1.1f;
         [SerializeField] private AudioSource source;
 
-
-        public void OnPointerEnter(PointerEventData eventData)
+        public void OnPointerDown(PointerEventData eventData)
         {
             transform.localScale *= scaleChange;
 
-            if (source.clip == null) return;
-
-            source.PlayOneShot(source.clip);
-
-        }
-
-        public void OnPointerExit(PointerEventData eventData)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-
+            if (source != null && source.clip != null)
+                source.PlayOneShot(source.clip);
         }
 
         public void OnPointerUp(PointerEventData eventData)
@@ -31,5 +21,4 @@ namespace FWC
             transform.localScale = new Vector3(1, 1, 1);
         }
     }
-
 }

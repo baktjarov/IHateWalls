@@ -4,13 +4,13 @@ namespace Player
 {
     public class WeaponRotator : MonoBehaviour
     {
-        [SerializeField] private Transform _base; // Основание пушки
-        [SerializeField] private Transform _barrel; // Ствол пушки
-        [SerializeField] private float _sensitivity = 0.25f; // Чувствительность для поворота
-        [SerializeField] private float _maxLeftRotation = -20f; // Максимальный угол поворота влево
-        [SerializeField] private float _maxRightRotation = 20f; // Максимальный угол поворота вправо
-        [SerializeField] private float _maxUpRotation = 25f; // Максимальный угол поворота вверх
-        [SerializeField] private float _maxDownRotation = -10f; // Максимальный угол поворота вниз
+        [SerializeField] private Transform _base; 
+        [SerializeField] private Transform _barrel; 
+        [SerializeField] private float _sensitivity = 0.25f; 
+        [SerializeField] private float _maxLeftRotation = -20f; 
+        [SerializeField] private float _maxRightRotation = 20f; 
+        [SerializeField] private float _maxUpRotation = 25f;
+        [SerializeField] private float _maxDownRotation = -10f; 
 
         private float _currentBarrelXAngle;
         private float _currentBaseYAngle;

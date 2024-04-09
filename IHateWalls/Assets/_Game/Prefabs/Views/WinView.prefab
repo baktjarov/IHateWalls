@@ -197,8 +197,6 @@ MonoBehaviour:
   _nextButton: {fileID: 56041661907010065}
   _mainMenuButton: {fileID: 1085483878350417475}
   _settingsButton: {fileID: 83784121492586526}
-  _playerController: {fileID: 4510160312077703108, guid: 76d947a0b57b84647bd8bafdd0ef5916,
-    type: 3}
 --- !u!1 &8140124691095260702
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +339,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8293195957545061963}
     m_Modifications:
+    - target: {fileID: 2802561457083296618, guid: 1979424d65edd3f47b502716eabe765e,
+        type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3036592163721903356, guid: 1979424d65edd3f47b502716eabe765e,
         type: 3}
       propertyPath: m_Pivot.x
@@ -477,6 +480,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8293195957545061963}
     m_Modifications:
+    - target: {fileID: 2802561457083296618, guid: 1979424d65edd3f47b502716eabe765e,
+        type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2802561457083296618, guid: 1979424d65edd3f47b502716eabe765e,
         type: 3}
       propertyPath: m_SpriteState.m_PressedSprite
@@ -625,6 +633,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8293195957545061963}
     m_Modifications:
+    - target: {fileID: 2802561457083296618, guid: 1979424d65edd3f47b502716eabe765e,
+        type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2802561457083296618, guid: 1979424d65edd3f47b502716eabe765e,
         type: 3}
       propertyPath: m_SpriteState.m_PressedSprite

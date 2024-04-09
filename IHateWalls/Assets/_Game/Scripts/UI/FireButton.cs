@@ -4,7 +4,7 @@ using Player;
 
 namespace UI.Views
 {
-    [RequireComponent(typeof(Button))] // Добавим компонент кнопки автоматически
+    [RequireComponent(typeof(Button))]
     public class FireButton : MonoBehaviour
     {
         public Image progressBar;
@@ -12,20 +12,18 @@ namespace UI.Views
         private float reloadTime = 3.0f;
         private float timer = 0.0f;
         private bool isReloading = false;
+        
+        private BulletShooter _bulletShooter;
 
-        private BulletShooter _bulletShooter; // Ссылка на компонент BulletShooter
-
-        void Start()
+        private void Start()
         {
-            // Получаем ссылку на компонент BulletShooter
-            _bulletShooter = FindObjectOfType<BulletShooter>();
-
-            // Привязываем обработчик нажатия кнопки
             var button = GetComponent<Button>();
             button.onClick.AddListener(OnButtonClick);
+
+            _bulletShooter = FindObjectOfType<BulletShooter>();
         }
 
-        void Update()
+         private void Update()
         {
             if (isReloading)
             {
@@ -44,12 +42,7 @@ namespace UI.Views
         {
             if (!isReloading)
             {
-                // Проверяем, есть ли компонент BulletShooter
-                if (_bulletShooter != null)
-                {
-                    _bulletShooter.Shoot(); // Вызываем метод Shoot() из BulletShooter
-                }
-
+                _bulletShooter.Shoot();
                 isReloading = true;
             }
         }

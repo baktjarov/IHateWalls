@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &773852762673277118
+--- !u!1 &8024304937675542622
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2982140931082050627}
+  - component: {fileID: 291082073518095139}
   m_Layer: 0
   m_Name: shootSocket
   m_TagString: Untagged
@@ -16,21 +16,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2982140931082050627
+--- !u!4 &291082073518095139
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 773852762673277118}
+  m_GameObject: {fileID: 8024304937675542622}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.17364825, y: 0, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: 0.03, y: 1.5, z: 4}
+  m_LocalRotation: {x: -0.17364825, y: -0, z: -0, w: 0.9848077}
+  m_LocalPosition: {x: 0.03, y: 1.4999999, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8825574514175578658}
-  m_LocalEulerAnglesHint: {x: -20, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8470149464940913021
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +147,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 130893170939470556, guid: 5021d026bca774b16baea56a7ded4def,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2982140931082050627}
+      addedObject: {fileID: 291082073518095139}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5021d026bca774b16baea56a7ded4def, type: 3}
 --- !u!4 &1108284214295024094 stripped

@@ -65,11 +65,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c500d62508e2edb4e972c0a6721990f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _force: 2500
-  _camera: {fileID: 0}
-  _bulletPrefab: {fileID: -49829969387268913, guid: dac7314c82df7f14a9cdb669d4805458,
-    type: 3}
-  _shootSocket: {fileID: 0}
+  _bulletSpeed: 50
+  _shootPosition: {fileID: 0}
+  _bulletPooling: {fileID: 11400000, guid: ab6e4fb6cbf99434e9607dc374c25b2e, type: 2}
 --- !u!114 &5155273497257218163
 MonoBehaviour:
   m_ObjectHideFlags: 0

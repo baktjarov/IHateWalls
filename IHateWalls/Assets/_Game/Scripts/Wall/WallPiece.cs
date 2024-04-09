@@ -53,7 +53,7 @@ namespace Walls
             transform.localScale = Vector3.one * _scale;
         }
 
-        public void Damage(float damage)
+        public void TakeDamage(float damage)
         {
             _rigidbody.useGravity = true;
             _rigidbody.isKinematic = false;
