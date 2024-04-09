@@ -10,10 +10,19 @@ namespace SO
         [Header("Settings")]
         [SerializeField] protected int _spawnIfPoolIsEmpty;
 
+        [Header("Debug")]
+        [SerializeField] protected Transform _parent;
+
         protected Queue<T> _targetsPool = new Queue<T>();
 
         protected void Spawn(int spawnAmount)
         {
+            if (_parent == null)
+            {
+                _parent = new GameObject(GetType().Name + "_BulletParent").transform;
+                DontDestroyOnLoad(_parent.gameObject);
+            }
+
             for (int i = 0; i < spawnAmount; i++)
             {
                 T newObject = Instantiate(_targetObject, Vector3.zero, Quaternion.identity);
@@ -42,6 +51,7 @@ namespace SO
         {
             toPut.transform.position = Vector3.zero;
             toPut.gameObject.SetActive(false);
+            toPut.transform.SetParent(_parent);
 
             _targetsPool.Enqueue(toPut);
         }

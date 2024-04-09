@@ -7,12 +7,13 @@ namespace UI.Views
     [RequireComponent(typeof(Button))]
     public class FireButton : MonoBehaviour
     {
+        [SerializeField] private AudioSource source;
         public Image progressBar;
 
         private float reloadTime = 3.0f;
         private float timer = 0.0f;
         private bool isReloading = false;
-        
+
         private BulletShooter _bulletShooter;
 
         private void Start()
@@ -23,7 +24,7 @@ namespace UI.Views
             _bulletShooter = FindObjectOfType<BulletShooter>();
         }
 
-         private void Update()
+        private void Update()
         {
             if (isReloading)
             {
@@ -43,6 +44,12 @@ namespace UI.Views
             if (!isReloading)
             {
                 _bulletShooter.Shoot();
+
+                if (source != null && source.clip != null)
+                {
+                    source.PlayOneShot(source.clip);
+                }
+
                 isReloading = true;
             }
         }
